@@ -1,0 +1,322 @@
+
+/* ====== VARIABLES Y RESETEO ====== */
+:root {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  color: #e8edf8;
+  background: #0b1020;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --fondo-card: #151d31;
+  --borde: #283550;
+  --texto-secundario: #9ba9c4;
+  --azul: #60a5fa;
+  --verde: #34d399;
+  --rojo: #fb7185;
+  --amarillo: #fbbf24;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, #17264a 0%, transparent 55%),
+    #0b1020;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+#app {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* ====== BUSCADOR Y FILTROS ====== */
+
+#Buscador,
+#selector {
+  min-height: 46px;
+  padding: 0 14px;
+  color: #e8edf8;
+  background: #151d31;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#Buscador {
+  width: min(360px, 100%);
+}
+
+#Buscador::placeholder {
+  color: #8290aa;
+}
+
+#Buscador:focus,
+#selector:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px #60a5fa22;
+}
+
+#selector {
+  cursor: pointer;
+}
+
+#selector option {
+  background: #151d31;
+  color: #e8edf8;
+}
+
+/* ====== BOTONES ====== */
+
+#app button {
+  min-height: 44px;
+  padding: 0 18px;
+  color: #f8fafc;
+  background: #253451;
+  border: 1px solid #344563;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s,
+    border-color 0.2s;
+}
+
+#app button:hover {
+  background: #34496e;
+  border-color: #6483b8;
+  transform: translateY(-2px);
+}
+
+#app button:active {
+  transform: translateY(0);
+}
+
+#Buscar,
+#BotonSelector {
+  background: #2563eb !important;
+  border-color: #3b82f6 !important;
+}
+
+#Buscar:hover,
+#BotonSelector:hover {
+  background: #1d4ed8 !important;
+}
+
+#Favoritos {
+  background: #6d3cc5 !important;
+  border-color: #8b5cf6 !important;
+}
+
+#Favoritos:hover {
+  background: #7c3aed !important;
+}
+
+/* ====== ESTADÍSTICAS ====== */
+/* Envuelve las estadísticas en .estadisticas en el HTML */
+
+.estadisticas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 32px 0;
+}
+
+.estadistica {
+  padding: 22px;
+  background: linear-gradient(145deg, #19243b, #11192b);
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px #00000018;
+}
+
+.estadistica h3 {
+  margin: 0 0 12px;
+  color: var(--texto-secundario);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.estadistica p {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.estadistica.exitos p {
+  color: var(--verde);
+}
+
+.estadistica.fallos p {
+  color: var(--rojo);
+}
+
+.estadistica.pendientes p {
+  color: var(--amarillo);
+}
+
+/* ====== GRID DE LANZAMIENTOS ====== */
+
+#datos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 28px;
+  align-items: stretch;
+}
+
+/* ====== CARD DE LANZAMIENTO ====== */
+
+.lanzamiento {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
+  padding: 24px;
+  overflow: hidden;
+
+  background: linear-gradient(150deg, #19253c, #111827 80%);
+  border: 1px solid var(--borde);
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px #00000020;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Brillo decorativo superior */
+
+.lanzamiento::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #60a5fa, transparent);
+  opacity: 0.8;
+}
+
+.lanzamiento:hover {
+  transform: translateY(-5px);
+  border-color: #4c6590;
+  box-shadow: 0 18px 40px #00000040;
+}
+
+.lanzamiento h2 {
+  margin: 0;
+  color: #f1f5ff;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.lanzamiento p {
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* Fecha del lanzamiento */
+
+.lanzamiento p:nth-of-type(1) {
+  padding: 8px 11px;
+  background: #ffffff08;
+  border: 1px solid #ffffff0c;
+  border-radius: 9px;
+}
+
+/* Botones dentro de las tarjetas */
+
+.lanzamiento button {
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 16px !important;
+  min-height: 44px;
+}
+
+/* Botón para guardar */
+
+.lanzamiento button[data-accion="guardar"] {
+  color: #bfdbfe !important;
+  background: #1d4ed833 !important;
+  border-color: #3b82f666 !important;
+}
+
+.lanzamiento button[data-accion="guardar"]:hover {
+  background: #2563eb55 !important;
+}
+
+/* Botón para quitar de favoritos */
+
+.lanzamiento button[data-accion="quitar"] {
+  color: #fecdd3 !important;
+  background: #be123c22 !important;
+  border-color: #fb718555 !important;
+}
+
+.lanzamiento button[data-accion="quitar"]:hover {
+  background: #be123c44 !important;
+}
+
+/* ====== RESPONSIVE ====== */
+
+@media (max-width: 900px) {
+  #datos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #app {
+    padding: 24px 16px;
+  }
+
+  #Buscador {
+    width: 100%;
+  }
+
+  #selector {
+    max-width: 100%;
+  }
+
+  .estadisticas {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .estadistica {
+    padding: 18px;
+  }
+
+  .estadistica p {
+    font-size: 1.7rem;
+  }
+
+  #datos {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .lanzamiento {
+    padding: 20px;
+  }
+}
