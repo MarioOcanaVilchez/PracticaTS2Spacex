@@ -73,15 +73,15 @@ function pintaLanzamientos(lanzamientos:Lanzamiento[]):void{
     }
   });
 }
-const botonBuscar = document.querySelector<HTMLButtonElement>('#Buscar')?.addEventListener('click',() => buscarLanzamientosNombre())
+document.querySelector<HTMLButtonElement>('#Buscar')?.addEventListener('click',() => buscarLanzamientosNombre())
 function buscarLanzamientosNombre(){
   pintaLanzamientos(buscarLanzamientos(lanzamientos,document.querySelector<HTMLInputElement>('#Buscador')!.value))
 }
-const botonSelector = document.querySelector<HTMLButtonElement>('#BotonSelector')?.addEventListener('click',() => pintaLanzamientosEstado())
+document.querySelector<HTMLButtonElement>('#BotonSelector')?.addEventListener('click',() => pintaLanzamientosEstado())
 function pintaLanzamientosEstado(){
   pintaLanzamientos(buscarLanzamientosPorEstado(lanzamientos,document.querySelector<HTMLSelectElement>('#selector')!.value))
 }
-const botonFavorito = document.querySelector<HTMLButtonElement>('#Favoritos')?.addEventListener('click',() => pintaLanzamientosFavoritos());
+document.querySelector<HTMLButtonElement>('#Favoritos')?.addEventListener('click',() => pintaLanzamientosFavoritos());
 function pintaLanzamientosFavoritos(){
   let lanzamientosFavoritos:Lanzamiento[] | null = obtenerLanzamientos();
   if (lanzamientosFavoritos == null) lanzamientosFavoritos = [];
